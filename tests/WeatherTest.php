@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the phper2007/weather.
+ *
+ * (c) phper2007 <liubo3ds@126.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Phper2007\Weather\Tests;
 
 use GuzzleHttp\Client;
@@ -10,7 +19,6 @@ use Phper2007\Weather\Exceptions\HttpException;
 use Phper2007\Weather\Exceptions\InvalidArgumentException;
 use Phper2007\Weather\Weather;
 use PHPUnit\Framework\TestCase;
-
 
 class WeatherTest extends TestCase
 {
@@ -28,8 +36,8 @@ class WeatherTest extends TestCase
                 'key' => 'mock-key',
                 'city' => '深圳',
                 'output' => 'json',
-                'extensions' => 'base'
-            ]
+                'extensions' => 'base',
+            ],
         ])->andReturn($response);
 
         //创建一个可替换的类
@@ -74,7 +82,6 @@ class WeatherTest extends TestCase
         $w->getWeather('深圳');
     }
 
-
     public function testGetHttpClient()
     {
         $w = new Weather('mock-key');
@@ -91,9 +98,7 @@ class WeatherTest extends TestCase
         $w->setGuzzleOptions(['timeout' => 5000]);
 
         $this->assertSame(5000, $w->getHttpClient()->getConfig('timeout'));
-
     }
-
 
     public function testGetWeatherWithInvalidType()
     {
